@@ -39,6 +39,8 @@ window.addEventListener('DOMContentLoaded', () => {
   var helpTextEle = document.querySelector('.app__help-text');
   var infoSvg = document.querySelector('.app__header-icon svg');
   var videoElement = document.querySelector('video');
+  var deviceServiceURL = 'http://www.google.com';
+
   window.appOverlay = document.querySelector('.app__overlay');
 
   //Initializing qr scanner
@@ -90,15 +92,26 @@ window.addEventListener('DOMContentLoaded', () => {
 
     QRReader.scan(result => {
       copiedText = result;
-      textBoxEle.value = result;
-      textBoxEle.select();
-      scanningEle.style.display = 'none';
-      if (isURL(result)) {
-        dialogOpenBtnElement.style.display = 'inline-block';
+
+      console.log('Result: ', result);
+
+      if (result.startsWith('http') || result.startsWith('https')) {
+        window.open(result, '_blank', 'toolbar=0,location=0,menubar=0');
+        scan();
+      } else if (result.startsWith('deviceID:')) {
+        window.open(deviceServiceURL + '?' + result, '_blank', 'toolbar=0,location=0,menubar=0');
+        scan();
+      } else {
+        textBoxEle.value = result;
+        textBoxEle.select();
+        scanningEle.style.display = 'none';
+        if (isURL(result)) {
+          dialogOpenBtnElement.style.display = 'inline-block';
+        }
+        dialogElement.classList.remove('app__dialog--hide');
+        dialogOverlayElement.classList.remove('app__dialog--hide');
+        const frame = document.querySelector('#frame');
       }
-      dialogElement.classList.remove('app__dialog--hide');
-      dialogOverlayElement.classList.remove('app__dialog--hide');
-      const frame = document.querySelector('#frame');
       // if (forSelectedPhotos && frame) frame.remove();
     }, forSelectedPhotos);
   }
