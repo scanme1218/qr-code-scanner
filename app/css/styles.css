@@ -291,8 +291,7 @@ video {
   right: 20px;
 }
 
-.app__dialog-open,
-.app__dialog-close {
+.app__dialog-open {
   border: 0;
   height: 35px;
   width: 150px;
@@ -301,7 +300,18 @@ video {
   font-weight: 500;
   outline: none;
   cursor: pointer;
-}}
+}
+
+.app__dialog-close {
+  border: 0;
+  height: 35px;
+  width: 70px;
+  font-size: 16px;
+  background: transparent;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+}
 
 .app__dialog-open {
   display: none;
