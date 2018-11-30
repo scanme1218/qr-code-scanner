@@ -205,42 +205,35 @@
           r = document.querySelector('.app__dialog-open'),
           c = document.querySelector('.app__dialog-close'),
           l = document.querySelector('.custom-scanner'),
-          s = document.querySelector('#result'),
-          u = (document.querySelector('.app__help-text'),
-          document.querySelector('.app__header-icon svg'),
-          document.querySelector('video'),
-          'http://www.google.com');
-        function p(t = !1) {
+          s = document.querySelector('#result');
+        document.querySelector('.app__help-text'), document.querySelector('.app__header-icon svg'), document.querySelector('video');
+        function u(t = !1) {
           window.isMediaStreamAPISupported && !window.noCameraPermission && (l.style.display = 'block'),
             t && (l.style.display = 'block'),
             i.scan(t => {
-              if (((e = t), console.log('Result: ', t), t.startsWith('http') || t.startsWith('https')))
-                window.open(t, '_blank', 'toolbar=0,location=0,menubar=0'), p();
-              else if (t.startsWith('deviceID:')) window.open(u + '?' + t, '_blank', 'toolbar=0,location=0,menubar=0'), p();
-              else {
+              (e = t),
                 (s.value = t),
-                  s.select(),
-                  (l.style.display = 'none'),
-                  d()(t) && (r.style.display = 'inline-block'),
-                  o.classList.remove('app__dialog--hide'),
-                  a.classList.remove('app__dialog--hide');
-                document.querySelector('#frame');
-              }
+                s.select(),
+                (l.style.display = 'none'),
+                d()(t) && (r.style.display = 'inline-block'),
+                o.classList.remove('app__dialog--hide'),
+                a.classList.remove('app__dialog--hide');
+              document.querySelector('#frame');
             }, t);
         }
-        function m() {
+        function p() {
           (e = null),
             (s.value = ''),
             window.isMediaStreamAPISupported || ((t.src = ''), (t.className = '')),
             o.classList.add('app__dialog--hide'),
             a.classList.add('app__dialog--hide'),
-            p();
+            u();
         }
         (window.appOverlay = document.querySelector('.app__overlay')),
           window.addEventListener('load', e => {
             i.init(),
               setTimeout(() => {
-                (window.appOverlay.style.borderStyle = 'solid'), window.isMediaStreamAPISupported && p();
+                (window.appOverlay.style.borderStyle = 'solid'), window.isMediaStreamAPISupported && u();
               }, 1e3),
               (function() {
                 var e = document.createElement('input');
@@ -264,15 +257,15 @@
                       (t.src = URL.createObjectURL(e.target.files[0])),
                       window.noCameraPermission || (l.style.display = 'block'),
                       (window.appOverlay.style.borderColor = 'rgb(62, 78, 184)'),
-                      p(!0));
+                      u(!0));
                   });
               })();
           }),
-          c.addEventListener('click', m, !1),
+          c.addEventListener('click', p, !1),
           r.addEventListener(
             'click',
             function() {
-              console.log('Result: ', e), window.open(e, '_blank', 'toolbar=0,location=0,menubar=0'), (e = null), m();
+              console.log('Result: ', e), window.open(e, '_blank', 'toolbar=0,location=0,menubar=0'), (e = null), p();
             },
             !1
           );

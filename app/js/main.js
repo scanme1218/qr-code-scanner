@@ -93,25 +93,30 @@ window.addEventListener('DOMContentLoaded', () => {
     QRReader.scan(result => {
       copiedText = result;
 
+      /*
       console.log('Result: ', result);
 
       if (result.startsWith('http') || result.startsWith('https')) {
-        window.open(result, '_blank', 'toolbar=0,location=0,menubar=0');
+        // window.open(result, '_blank', 'toolbar=0,location=0,menubar=0');
+		windowReference.location = result;
         scan();
-      } else if (result.startsWith('deviceID:')) {
-        window.open(deviceServiceURL + '?' + result, '_blank', 'toolbar=0,location=0,menubar=0');
+      } else if (result.startsWith('deviceID=')) {
+        // window.open(deviceServiceURL + '?' + result, '_blank', 'toolbar=0,location=0,menubar=0');
+		windowReference.location = deviceServiceURL + '?' + result;
         scan();
       } else {
-        textBoxEle.value = result;
-        textBoxEle.select();
-        scanningEle.style.display = 'none';
-        if (isURL(result)) {
-          dialogOpenBtnElement.style.display = 'inline-block';
-        }
-        dialogElement.classList.remove('app__dialog--hide');
-        dialogOverlayElement.classList.remove('app__dialog--hide');
-        const frame = document.querySelector('#frame');
+	  */
+
+      textBoxEle.value = result;
+      textBoxEle.select();
+      scanningEle.style.display = 'none';
+      if (isURL(result)) {
+        dialogOpenBtnElement.style.display = 'inline-block';
       }
+      dialogElement.classList.remove('app__dialog--hide');
+      dialogOverlayElement.classList.remove('app__dialog--hide');
+      const frame = document.querySelector('#frame');
+      // }
       // if (forSelectedPhotos && frame) frame.remove();
     }, forSelectedPhotos);
   }
