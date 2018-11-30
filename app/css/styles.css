@@ -295,13 +295,13 @@ video {
 .app__dialog-close {
   border: 0;
   height: 35px;
-  width: 70px;
+  width: 150px;
   font-size: 16px;
   background: transparent;
   font-weight: 500;
   outline: none;
   cursor: pointer;
-}
+}}
 
 .app__dialog-open {
   display: none;
